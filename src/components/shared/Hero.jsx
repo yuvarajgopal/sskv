@@ -1,35 +1,24 @@
 import { motion } from 'framer-motion';
-import { FaPlay, FaImage } from 'react-icons/fa';
 
-export default function Hero({ title, subtitle, height = 'full', breadcrumb, bannerType = 'image', bannerImage, children, overlay = true }) {
+export default function Hero({ title, subtitle, height = 'full', breadcrumb, bannerImage, children, overlay = true }) {
   const isInnerPage = height !== 'full' && breadcrumb;
 
   return (
     <>
-      {/* Inner page banner image/video placeholder */}
+      {/* Inner page banner */}
       {isInnerPage && (
         <section className="relative w-full h-[50vh] md:h-[60vh] overflow-hidden">
-          {/* Background image if provided */}
+          {/* Background image or gradient fallback */}
           {bannerImage ? (
-            <>
-              <div className="absolute inset-0">
-                <img
-                  src={bannerImage}
-                  alt={title}
-                  className="w-full h-full object-cover"
-                />
-              </div>
-            </>
+            <div className="absolute inset-0">
+              <img
+                src={bannerImage}
+                alt={title}
+                className="w-full h-full object-cover"
+              />
+            </div>
           ) : (
-            <>
-              {/* Placeholder background */}
-              <div className="absolute inset-0 bg-gradient-to-br from-primary-800 via-primary-700 to-primary-900" />
-
-              {/* Simulated image pattern */}
-              <div className="absolute inset-0 opacity-[0.08]" style={{
-                backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-              }} />
-            </>
+            <div className="absolute inset-0 bg-gradient-to-br from-primary-800 via-primary-700 to-primary-900" />
           )}
 
           {/* Decorative blurs */}
@@ -40,28 +29,6 @@ export default function Hero({ title, subtitle, height = 'full', breadcrumb, ban
 
           {/* Dark overlay for readability */}
           <div className="absolute inset-0 bg-primary-900/40" />
-
-          {/* Banner placeholder icon */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8 }}
-            className="absolute inset-0 flex items-center justify-center"
-          >
-            {bannerType === 'video' ? (
-              <div className="flex flex-col items-center">
-                <div className="w-20 h-20 md:w-24 md:h-24 rounded-full bg-white/10 backdrop-blur-sm border-2 border-white/20 flex items-center justify-center cursor-pointer hover:bg-white/20 transition-all duration-300 group">
-                  <FaPlay className="text-2xl md:text-3xl text-white/70 group-hover:text-accent-400 transition-colors ml-1" />
-                </div>
-                <span className="text-white/30 text-xs mt-3 tracking-widest uppercase">Watch Video</span>
-              </div>
-            ) : (
-              <div className="flex flex-col items-center opacity-20">
-                <FaImage className="text-6xl md:text-8xl text-white" />
-                <span className="text-white text-xs mt-3 tracking-widest uppercase">Banner Image</span>
-              </div>
-            )}
-          </motion.div>
 
           {/* Content overlay at bottom */}
           <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-primary-900/90 via-primary-900/50 to-transparent pt-20 pb-8 md:pb-12">

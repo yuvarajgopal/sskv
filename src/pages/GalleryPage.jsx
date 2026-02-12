@@ -5,7 +5,7 @@ import Hero from '../components/shared/Hero';
 import SectionHeading from '../components/shared/SectionHeading';
 import VideoEmbed from '../components/sections/VideoEmbed';
 import { galleryImages } from '../data/gallery';
-import { videos } from '../data/media';
+import { videos, images } from '../data/media';
 
 const galleryCategories = [
   { id: 'all', label: 'All', icon: FaImage },
@@ -46,7 +46,7 @@ export default function GalleryPage() {
         subtitle="Capturing moments of learning, growth, and celebration"
         height="medium"
         breadcrumb="Gallery"
-        bannerType="video"
+        bannerImage={images.gallery.events[0]}
       />
 
       {/* Gallery */}
