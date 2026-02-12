@@ -62,7 +62,7 @@ export default function Card({ title, description, icon: Icon, color, badge, var
       >
         <div
           className="aspect-[4/3] flex items-center justify-center"
-          style={{ background: `linear-gradient(135deg, ${color || '#1e3a5f'}, ${color || '#1e3a5f'}cc)` }}
+          style={{ background: `linear-gradient(135deg, ${color || '#382e27'}, ${color || '#382e27'}cc)` }}
         >
           {Icon && <Icon className="text-5xl text-white/40" />}
         </div>

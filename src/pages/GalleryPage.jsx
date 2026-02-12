@@ -16,18 +16,18 @@ const galleryCategories = [
 
 // Generate placeholder gallery items with varied colors
 const galleryItems = [
-  { id: 1, title: 'College Main Building', category: 'campus', color: '#1e3a5f' },
+  { id: 1, title: 'College Main Building', category: 'campus', color: '#382e27' },
   { id: 2, title: 'Annual Day Celebration', category: 'events', color: '#c0392b' },
   { id: 3, title: 'Sports Day - Athletic Meet', category: 'sports', color: '#27ae60' },
   { id: 4, title: 'NSS Camp Activities', category: 'students', color: '#2980b9' },
   { id: 5, title: 'College Library', category: 'campus', color: '#8e44ad' },
   { id: 6, title: 'Cultural Program', category: 'events', color: '#d35400' },
-  { id: 7, title: 'Student Achievements', category: 'achievements', color: '#d4a843' },
+  { id: 7, title: 'Student Achievements', category: 'achievements', color: '#e07830' },
   { id: 8, title: 'Computer Lab', category: 'campus', color: '#16a085' },
   { id: 9, title: 'Republic Day Celebration', category: 'events', color: '#e74c3c' },
   { id: 10, title: 'Sports Champions', category: 'sports', color: '#2ecc71' },
   { id: 11, title: 'Classroom Session', category: 'students', color: '#3498db' },
-  { id: 12, title: 'College Entrance', category: 'campus', color: '#1e3a5f' },
+  { id: 12, title: 'College Entrance', category: 'campus', color: '#382e27' },
   { id: 13, title: 'Seminar Hall', category: 'events', color: '#9b59b6' },
   { id: 14, title: 'Award Ceremony', category: 'achievements', color: '#f39c12' },
   { id: 15, title: 'NCC Parade', category: 'students', color: '#34495e' },
@@ -65,6 +65,7 @@ export default function GalleryPage() {
         subtitle="Capturing moments of learning, growth, and celebration"
         height="medium"
         breadcrumb="Gallery"
+        bannerType="video"
       />
 
       {/* Gallery */}

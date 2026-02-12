@@ -10,7 +10,7 @@ const contactCards = [
     icon: FaMapMarkerAlt,
     title: 'Visit Us',
     details: [COLLEGE_INFO.name, COLLEGE_INFO.location],
-    color: '#1e3a5f',
+    color: '#382e27',
   },
   {
     icon: FaPhone,
@@ -22,7 +22,7 @@ const contactCards = [
     icon: FaEnvelope,
     title: 'Email Us',
     details: COLLEGE_INFO.email,
-    color: '#d4a843',
+    color: '#e07830',
   },
 ];
 

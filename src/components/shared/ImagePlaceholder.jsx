@@ -1,4 +1,4 @@
-export default function ImagePlaceholder({ text, icon: Icon, aspectRatio = '16/9', className = '', color = '#1e3a5f' }) {
+export default function ImagePlaceholder({ text, icon: Icon, aspectRatio = '16/9', className = '', color = '#382e27' }) {
   return (
     <div
       className={`flex flex-col items-center justify-center rounded-lg ${className}`}
