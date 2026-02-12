@@ -4,6 +4,7 @@ import SectionHeading from '../components/shared/SectionHeading';
 import AnimatedSection from '../components/shared/AnimatedSection';
 import ContactForm from '../components/sections/ContactForm';
 import { COLLEGE_INFO } from '../utils/constants';
+import { images } from '../data/media';
 
 const contactCards = [
   {
@@ -34,6 +35,7 @@ export default function ContactPage() {
         subtitle="We'd love to hear from you — reach out with any questions"
         height="medium"
         breadcrumb="Contact"
+        bannerImage={images.contact.banner}
       />
 
       {/* Contact Cards */}

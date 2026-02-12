@@ -1,37 +1,18 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FaTimes, FaChevronLeft, FaChevronRight, FaImage, FaCamera, FaUserGraduate, FaRunning, FaTrophy, FaCalendarAlt } from 'react-icons/fa';
+import { FaTimes, FaChevronLeft, FaChevronRight, FaImage, FaCamera, FaUserGraduate, FaTrophy, FaCalendarAlt } from 'react-icons/fa';
 import Hero from '../components/shared/Hero';
 import SectionHeading from '../components/shared/SectionHeading';
 import VideoEmbed from '../components/sections/VideoEmbed';
+import { galleryImages } from '../data/gallery';
+import { videos } from '../data/media';
 
 const galleryCategories = [
   { id: 'all', label: 'All', icon: FaImage },
   { id: 'campus', label: 'Campus', icon: FaCamera },
   { id: 'events', label: 'Events', icon: FaCalendarAlt },
   { id: 'students', label: 'Students', icon: FaUserGraduate },
-  { id: 'sports', label: 'Sports', icon: FaRunning },
   { id: 'achievements', label: 'Achievements', icon: FaTrophy },
-];
-
-// Generate placeholder gallery items with varied colors
-const galleryItems = [
-  { id: 1, title: 'College Main Building', category: 'campus', color: '#382e27' },
-  { id: 2, title: 'Annual Day Celebration', category: 'events', color: '#c0392b' },
-  { id: 3, title: 'Sports Day - Athletic Meet', category: 'sports', color: '#27ae60' },
-  { id: 4, title: 'NSS Camp Activities', category: 'students', color: '#2980b9' },
-  { id: 5, title: 'College Library', category: 'campus', color: '#8e44ad' },
-  { id: 6, title: 'Cultural Program', category: 'events', color: '#d35400' },
-  { id: 7, title: 'Student Achievements', category: 'achievements', color: '#e07830' },
-  { id: 8, title: 'Computer Lab', category: 'campus', color: '#16a085' },
-  { id: 9, title: 'Republic Day Celebration', category: 'events', color: '#e74c3c' },
-  { id: 10, title: 'Sports Champions', category: 'sports', color: '#2ecc71' },
-  { id: 11, title: 'Classroom Session', category: 'students', color: '#3498db' },
-  { id: 12, title: 'College Entrance', category: 'campus', color: '#382e27' },
-  { id: 13, title: 'Seminar Hall', category: 'events', color: '#9b59b6' },
-  { id: 14, title: 'Award Ceremony', category: 'achievements', color: '#f39c12' },
-  { id: 15, title: 'NCC Parade', category: 'students', color: '#34495e' },
-  { id: 16, title: 'College Garden', category: 'campus', color: '#27ae60' },
 ];
 
 export default function GalleryPage() {
@@ -39,8 +20,8 @@ export default function GalleryPage() {
   const [lightboxIndex, setLightboxIndex] = useState(null);
 
   const filtered = activeCategory === 'all'
-    ? galleryItems
-    : galleryItems.filter((item) => item.category === activeCategory);
+    ? galleryImages
+    : galleryImages.filter((item) => item.category === activeCategory);
 
   function openLightbox(index) {
     setLightboxIndex(index);
@@ -107,15 +88,17 @@ export default function GalleryPage() {
                   onClick={() => openLightbox(index)}
                   className="cursor-pointer group relative overflow-hidden rounded-xl shadow-md"
                 >
-                  <div
-                    className="aspect-[4/3] flex items-center justify-center"
-                    style={{ background: `linear-gradient(135deg, ${item.color}, ${item.color}bb)` }}
-                  >
-                    <FaCamera className="text-4xl text-white/30 group-hover:text-white/50 transition-all" />
+                  <div className="aspect-[4/3] overflow-hidden">
+                    <img
+                      src={item.src}
+                      alt={item.alt}
+                      className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+                      loading="lazy"
+                    />
                   </div>
                   <div className="absolute inset-0 bg-primary-900/0 group-hover:bg-primary-900/40 transition-all duration-300 flex items-end">
                     <div className="w-full p-3 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
-                      <p className="text-white text-sm font-semibold">{item.title}</p>
+                      <p className="text-white text-sm font-semibold">{item.alt}</p>
                     </div>
                   </div>
                 </motion.div>
@@ -162,21 +145,19 @@ export default function GalleryPage() {
               className="max-w-4xl w-full mx-8"
               onClick={(e) => e.stopPropagation()}
             >
-              <div
-                className="aspect-[16/10] rounded-xl flex items-center justify-center"
-                style={{
-                  background: `linear-gradient(135deg, ${filtered[lightboxIndex].color}, ${filtered[lightboxIndex].color}bb)`,
-                }}
-              >
-                <div className="text-center text-white">
-                  <FaCamera className="text-6xl mx-auto mb-4 opacity-40" />
-                  <p className="text-xl font-heading font-bold">{filtered[lightboxIndex].title}</p>
-                  <p className="text-white/50 text-sm mt-1">Image placeholder — actual photo will appear here</p>
-                </div>
+              <div className="aspect-[16/10] rounded-xl overflow-hidden bg-neutral-900">
+                <img
+                  src={filtered[lightboxIndex].src}
+                  alt={filtered[lightboxIndex].alt}
+                  className="w-full h-full object-contain"
+                />
               </div>
-              <p className="text-white/60 text-center text-sm mt-4">
-                {lightboxIndex + 1} / {filtered.length}
-              </p>
+              <div className="text-center mt-4">
+                <p className="text-white text-lg font-semibold">{filtered[lightboxIndex].alt}</p>
+                <p className="text-white/60 text-sm mt-2">
+                  {lightboxIndex + 1} / {filtered.length}
+                </p>
+              </div>
             </motion.div>
 
             {/* Next */}
@@ -198,7 +179,10 @@ export default function GalleryPage() {
             title="Campus Video Tour"
             subtitle="Take a virtual tour of our beautiful campus"
           />
-          <VideoEmbed title="SSKV College Campus Tour" />
+          <VideoEmbed
+            videoId={videos.campusTour.id}
+            title={videos.campusTour.title}
+          />
         </div>
       </section>
     </>

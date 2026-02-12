@@ -5,6 +5,7 @@ import AnimatedSection from '../components/shared/AnimatedSection';
 import Card from '../components/shared/Card';
 import DepartmentGrid from '../components/sections/DepartmentGrid';
 import CTABanner from '../components/sections/CTABanner';
+import { images } from '../data/media';
 
 const highlights = [
   {
@@ -48,6 +49,7 @@ export default function AcademicsPage() {
         subtitle="11 undergraduate programs across Arts, Science, Commerce, and Professional streams"
         height="medium"
         breadcrumb="Academics"
+        bannerImage={images.academics.banner}
       />
 
       {/* All Departments */}

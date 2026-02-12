@@ -7,6 +7,7 @@ import SectionHeading from '../components/shared/SectionHeading';
 import AnimatedSection from '../components/shared/AnimatedSection';
 import { departments } from '../data/departments';
 import { COLLEGE_INFO } from '../utils/constants';
+import { images } from '../data/media';
 
 const steps = [
   { icon: FaClipboardCheck, title: 'Check Eligibility', description: 'Review program requirements and ensure you meet the eligibility criteria.' },
@@ -88,6 +89,7 @@ export default function AdmissionsPage() {
         subtitle="Your journey to a brighter future starts here"
         height="medium"
         breadcrumb="Admissions"
+        bannerImage={images.admissions.banner}
       >
         <Button variant="gold" size="lg">
           Download Application Form

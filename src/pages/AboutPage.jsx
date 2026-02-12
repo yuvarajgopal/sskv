@@ -3,6 +3,7 @@ import Hero from '../components/shared/Hero';
 import SectionHeading from '../components/shared/SectionHeading';
 import AnimatedSection from '../components/shared/AnimatedSection';
 import CTABanner from '../components/sections/CTABanner';
+import { images } from '../data/media';
 
 const leadership = [
   { name: 'President', designation: 'President', message: 'Leading the institution towards excellence in education and holistic development.' },
@@ -27,6 +28,7 @@ export default function AboutPage() {
         subtitle="A legacy of empowering women through education in the heart of Kanchipuram"
         height="medium"
         breadcrumb="About Us"
+        bannerImage={images.about.banner}
       />
 
       {/* Our Story */}
@@ -61,14 +63,21 @@ export default function AboutPage() {
 
             <AnimatedSection direction="right">
               <div className="relative">
-                <div className="aspect-square rounded-2xl bg-gradient-to-br from-primary-700 to-primary-900 flex items-center justify-center shadow-2xl">
-                  <div className="text-center text-white p-8">
-                    <FaUniversity className="text-7xl text-accent-400 mx-auto mb-6" />
-                    <p className="text-xl font-heading font-bold">University of Madras</p>
-                    <p className="text-white/60 mt-2">Affiliated Institution</p>
-                    <div className="mt-6 pt-6 border-t border-white/10">
-                      <p className="text-3xl font-bold text-accent-400">11</p>
-                      <p className="text-white/60 text-sm">Academic Programs</p>
+                <div className="aspect-square rounded-2xl overflow-hidden shadow-2xl">
+                  <img
+                    src={images.about.building}
+                    alt="SSKV College Building"
+                    className="w-full h-full object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-primary-900/95 via-primary-900/50 to-transparent flex items-end">
+                    <div className="text-center text-white p-8 w-full">
+                      <FaUniversity className="text-7xl text-accent-400 mx-auto mb-6" />
+                      <p className="text-xl font-heading font-bold">University of Madras</p>
+                      <p className="text-white/60 mt-2">Affiliated Institution</p>
+                      <div className="mt-6 pt-6 border-t border-white/10">
+                        <p className="text-3xl font-bold text-accent-400">11</p>
+                        <p className="text-white/60 text-sm">Academic Programs</p>
+                      </div>
                     </div>
                   </div>
                 </div>

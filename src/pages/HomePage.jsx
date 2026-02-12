@@ -12,6 +12,7 @@ import EventsTimeline from '../components/sections/EventsTimeline';
 import CTABanner from '../components/sections/CTABanner';
 import VideoEmbed from '../components/sections/VideoEmbed';
 import { events } from '../data/events';
+import { videos, images } from '../data/media';
 
 const features = [
   {
@@ -44,6 +45,7 @@ export default function HomePage() {
         title="SSKV College of Arts & Science for Women"
         subtitle="Empowering Women Through Quality Education — Affiliated to University of Madras, Kanchipuram"
         height="full"
+        bannerImage={images.home.hero}
       >
         <Button variant="gold" size="lg" href="/academics" icon={FaGraduationCap}>
           Explore Programs
@@ -84,11 +86,18 @@ export default function HomePage() {
 
             <AnimatedSection direction="right">
               <div className="relative">
-                <div className="aspect-[4/3] rounded-2xl bg-gradient-to-br from-primary-700 via-primary-600 to-primary-800 flex items-center justify-center shadow-2xl">
-                  <div className="text-center text-white p-8">
-                    <FaGraduationCap className="text-6xl text-accent-400 mx-auto mb-4" />
-                    <p className="text-2xl font-heading font-bold">5 Institutions</p>
-                    <p className="text-white/60 mt-2">Under One Trusted Management</p>
+                <div className="aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl">
+                  <img
+                    src={images.home.welcomeSection}
+                    alt="SSKV College Students"
+                    className="w-full h-full object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-primary-900/90 via-primary-900/30 to-transparent flex items-end">
+                    <div className="text-center text-white p-8 w-full">
+                      <FaGraduationCap className="text-6xl text-accent-400 mx-auto mb-4" />
+                      <p className="text-2xl font-heading font-bold">5 Institutions</p>
+                      <p className="text-white/60 mt-2">Under One Trusted Management</p>
+                    </div>
                   </div>
                 </div>
                 {/* Decorative accent */}
@@ -148,7 +157,10 @@ export default function HomePage() {
             title="Campus Life"
             subtitle="Take a glimpse into the vibrant life at SSKV College"
           />
-          <VideoEmbed />
+          <VideoEmbed
+            videoId={videos.campusLife.id}
+            title={videos.campusLife.title}
+          />
         </div>
       </section>
 
